@@ -26,5 +26,13 @@ function cacheMiddleware(req, res, next) {
 
   next();
 }
+function invalidateCache(req, res, next) {
+  res.on("finish", () => {
+    if (res.statusCode >= 200 && res.statusCode < 300) {
+      cache = {};
+    }
+  });
+  next();
+}
 
-module.exports = { cacheMiddleware };
+module.exports = { cacheMiddleware, invalidateCache };
