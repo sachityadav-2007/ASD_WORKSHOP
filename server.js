@@ -49,5 +49,5 @@ app.get("/products/:id", async (req, res) => {
 });
 
 app.listen(3001, () => {
-  console.log("Server running on port 3000");
+  console.log("Server running on port 3001");
 });
